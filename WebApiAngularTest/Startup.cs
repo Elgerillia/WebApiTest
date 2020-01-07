@@ -31,7 +31,11 @@ namespace WebApiAngularTest
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(x => x.UseSqlServer("Server=LAPTOP-7GC7SUDC\\SQLEXPRESS;Database=WebApiAngularTestDB; Trusted_Connection=True;"));
+            //Heim
+            //services.AddDbContext<DataContext>(x => x.UseSqlServer("Server=LAPTOP-7GC7SUDC\\SQLEXPRESS;Database=WebApiAngularTestDB; Trusted_Connection=True;"));
+            //SCHOTT
+            services.AddDbContext<DataContext>(x => x.UseSqlServer("Server=SDEJENM101005\\SQLEXPRESS;Database=WebApiAngularTestDB; Trusted_Connection=True;"));
+
             services.AddControllers();
             services.AddCors();
             services.AddScoped<IAuthRepository, AuthRepository>();
