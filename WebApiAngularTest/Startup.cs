@@ -20,6 +20,7 @@ using System.Net;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using WebApiAngularTest.Helpers;
+using AutoMapper;
 
 namespace WebApiAngularTest
 {
@@ -39,10 +40,14 @@ namespace WebApiAngularTest
             //services.AddDbContext<DataContext>(x => x.UseSqlServer("Server=LAPTOP-7GC7SUDC\\SQLEXPRESS;Database=WebApiAngularTestDB; Trusted_Connection=True;"));
             //SCHOTT
             services.AddDbContext<DataContext>(x => x.UseSqlServer("Server=SDEJENM101005\\SQLEXPRESS;Database=WebApiAngularTestDB; Trusted_Connection=True;"));
-
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(opt =>
+            {
+                opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            });
             services.AddCors();
+            services.AddAutoMapper(typeof(IDatingRepository).Assembly);
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IDatingRepository, DatingRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options => {
                     options.TokenValidationParameters = new TokenValidationParameters
