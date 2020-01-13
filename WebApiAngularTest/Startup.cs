@@ -37,11 +37,11 @@ namespace WebApiAngularTest
         public void ConfigureServices(IServiceCollection services)
         {
             //PC
-            services.AddDbContext<DataContext>(x => x.UseSqlServer("Server=DESKTOP-1B9PA1P\\SQLEXPRESS;Database=WebApiAngularTestDB; Trusted_Connection=True;"));
+            //services.AddDbContext<DataContext>(x => x.UseSqlServer("Server=DESKTOP-1B9PA1P\\SQLEXPRESS;Database=WebApiAngularTestDB; Trusted_Connection=True;"));
             //Laptop
             //services.AddDbContext<DataContext>(x => x.UseSqlServer("Server=LAPTOP-7GC7SUDC\\SQLEXPRESS;Database=WebApiAngularTestDB; Trusted_Connection=True;"));
             //SCHOTT
-            //services.AddDbContext<DataContext>(x => x.UseSqlServer("Server=SDEJENM101005\\SQLEXPRESS;Database=WebApiAngularTestDB; Trusted_Connection=True;"));
+            services.AddDbContext<DataContext>(x => x.UseSqlServer("Server=SDEJENM101005\\SQLEXPRESS;Database=WebApiAngularTestDB; Trusted_Connection=True;"));
             services.AddControllers().AddNewtonsoftJson(opt =>
             {
                 opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
