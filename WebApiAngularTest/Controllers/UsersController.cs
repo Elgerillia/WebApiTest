@@ -35,7 +35,7 @@ namespace WebApiAngularTest.Controllers
             return Ok(userToReturn);
         }
 
-        [HttpGet("{Id}")]
+        [HttpGet("{Id}", Name="GetUser")]
         public async Task<IActionResult> GetUser(int id)
         {
             var user = await _repo.GetUser(id);
